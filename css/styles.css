@@ -289,10 +289,15 @@ nav a, nav a:hover {
 /* MAIN CONTENT */
 
 #main-content {
-  margin-top: 1000px;
+  margin-top: 800px;
   opacity: 0;
   transition: all 1s ease-out;
   font-size: 1.2em;
+}
+
+#main-content.active {
+  margin-top: 50px;
+  opacity: 1;
 }
 
 h2 {
