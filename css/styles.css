@@ -491,12 +491,12 @@ button {
   transition: all .2s linear;
 }
 
-button#img-previous {
+button.img-previous {
   left: -25px;
   top: 225px;
 }
 
-button#img-next {
+button.img-next {
   left: 875px;
   top: 225px;
 }
@@ -505,10 +505,17 @@ button:hover {
   background-color: #b94646;
 }
 
+button.img-button-inactive {
+  opacity: 0 !important;
+  width: 0;
+  /* display: none; */
+}
+
 .image-container {
   display: flex;
   flex-direction: row-reverse;
   align-content: space-between;
+  overflow-x: hidden;
 }
 
 .image-carousel img {
@@ -516,10 +523,6 @@ button:hover {
   border-radius: 10px;
   transition: all .5s ease-out;
   width: 100%;
-}
-
-.image-inactive {
-  display: none
 }
 
 .link-section a {

@@ -142,19 +142,19 @@
             </ul>
           </div>
           <div class="image-carousel">
-            <button id="img-previous" class="button" ng-click="switchImage('project1', 'previous')">◄</button>
-            <button id="img-next" class="button" ng-click="switchImage('project1', 'next')">►</button>
-            <div class="image-container">
+            <button id="img-previous-project1" class="button img-previous" ng-click="switchImage('project1', 'previous')">◄</button>
+            <button id="img-next-project1" class="button img-next" ng-click="switchImage('project1', 'next')">►</button>
+            <div id="image-container-project1" class="image-container">
               <?php
                 $dir = glob("./images/project1/*");
                 $counter = 0;
                 foreach ($dir as $image) {
                   $counter += 1;
                   $imgId = "project1-img-" . $counter;
-                  if ($counter == count($dir)) {
+                  if ($counter == 1) {
                       echo "<img id=$imgId class='image-active img-project1' src=$image>";
                   } else {
-                      echo "<img id=$imgId class='image-inactive img-project1' src=$image>";
+                      echo "<img id=$imgId class='img-project1' src=$image>";
                   }
                 }
               ?>
@@ -194,19 +194,19 @@
             </ul>
           </div>
           <div class="image-carousel">
-            <button id="img-previous" class="button" ng-click="switchImage('project2', 'previous')">◄</button>
-            <button id="img-next" class="button" ng-click="switchImage('project2', 'next')">►</button>
-            <div class="image-container">
+            <button id="img-previous-project2" class="button img-previous" ng-click="switchImage('project2', 'previous')">◄</button>
+            <button id="img-next-project2" class="button img-next" ng-click="switchImage('project2', 'next')">►</button>
+            <div id="image-container-project2" class="image-container">
               <?php
                 $dir = glob("./images/project2/*");
                 $counter = 0;
                 foreach ($dir as $image) {
                   $counter += 1;
                   $imgId = "project2-img-" . $counter;
-                  if ($counter == count($dir)) {
+                  if ($counter == 1) {
                       echo "<img id=$imgId class='image-active img-project2' src=$image>";
                   } else {
-                      echo "<img id=$imgId class='image-inactive img-project2' src=$image>";
+                      echo "<img id=$imgId class='img-project2' src=$image>";
                   }
                 }
               ?>
@@ -257,19 +257,19 @@
             </ul>
           </div>
           <div class="image-carousel">
-            <button id="img-previous" class="button" ng-click="switchImage('project3', 'previous')">◄</button>
-            <button id="img-next" class="button" ng-click="switchImage('project3', 'next')">►</button>
-            <div class="image-container">
+            <button id="img-previous-project3" class="button img-previous" ng-click="switchImage('project3', 'previous')">◄</button>
+            <button id="img-next-project3" class="button img-next" ng-click="switchImage('project3', 'next')">►</button>
+            <div id="image-container-project3" class="image-container">
               <?php
                 $dir = glob("./images/project3/*");
                 $counter = 0;
                 foreach ($dir as $image) {
                   $counter += 1;
                   $imgId = "project3-img-" . $counter;
-                  if ($counter == count($dir)) {
+                  if ($counter == 1) {
                       echo "<img id=$imgId class='image-active img-project3' src=$image>";
                   } else {
-                      echo "<img id=$imgId class='image-inactive img-project3' src=$image>";
+                      echo "<img id=$imgId class='img-project3' src=$image>";
                   }
                 }
               ?>

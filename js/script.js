@@ -13,6 +13,10 @@ app.controller('mainCtrl', function($scope, $http, $window) {
         $scope.loadSkillBars();
       }
 
+      if (angular.element(entries[0].target).hasClass('checkbox-cover')) {
+        $scope.animateCheckbox(entries[0].target);
+      }
+
       if (entries[0].target.id === 'about' || entries[0].target.id === 'skills') {
         $scope.deactivateNavLink();
         $scope.activateNavLink('nav-link-about');
@@ -105,10 +109,97 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     }
   };
 
+  $scope.animateCheckbox = function(checkBoxElement) {
+    angular.element(checkBoxElement).addClass('checkbox-cover-active');
+  };
+
+  $scope.displayImageButtons = function(projectId) {
+    let imgNextElement = document.getElementById('img-next-' + projectId);
+    let imgPreviousElement = document.getElementById('img-previous-' + projectId);
+
+    angular.element(imgNextElement).removeClass('img-button-inactive');
+    angular.element(imgPreviousElement).removeClass('img-button-inactive');
+  };
+
+  $scope.hideImageButtons = function(projectId) {
+    let imageElements = document.querySelectorAll('.img-' + projectId);
+    let activeImageElement = '';
+
+    for (let i = 0; i < imageElements.length; i++) {
+      if (angular.element(imageElements[i]).hasClass('image-active')) {
+        activeImageElement = imageElements[i];
+      }
+    }
+
+    let activeImageIndex = activeImageElement.id.split('-')[activeImageElement.id.split('-').length - 1];
+
+    if (activeImageIndex == 1) {
+      let previousButtonElement = document.getElementById('img-previous-' + projectId);
+      angular.element(previousButtonElement).addClass('img-button-inactive');
+    } else if (activeImageIndex == imageElements.length) {
+      let nextButtonElement = document.getElementById('img-next-' + projectId);
+      angular.element(nextButtonElement).addClass('img-button-inactive');
+    } else {
+      $scope.displayImageButtons(projectId);
+    }
+  };
+
+  $scope.returnScrollCoordinateX = function(activeImageIndex, totalImages, scrollWidth, direction) {
+    if (direction === 'next') {
+      return -activeImageIndex * scrollWidth;
+    } else {
+      return (-activeImageIndex + 2) * scrollWidth;
+    }
+  };
+
+  $scope.switchImage = function(projectId, direction) {
+    let imageElements = document.querySelectorAll('.img-' + projectId);
+    let imageContainerElement = document.querySelector('#image-container-' + projectId);
+    let scrollWidth = imageContainerElement.offsetWidth;
+    let activeImageElement = '';
+
+
+    for (let i = 0; i < imageElements.length; i++) {
+      if (angular.element(imageElements[i]).hasClass('image-active')) {
+        activeImageElement = imageElements[i];
+      }
+    }
+
+    let activeImageIndex = parseInt(activeImageElement.id.split('-')[activeImageElement.id.split('-').length - 1]);
+    let scrollCoordinateX = $scope.returnScrollCoordinateX(activeImageIndex, imageElements.length, scrollWidth, direction);
 
 
 
-  // Excecute Functions Here
+    if (direction === 'next') {
+      imageContainerElement.scrollTo({
+        top: 0,
+        left: scrollCoordinateX,
+        behavior: 'smooth',
+      });
+
+      if (activeImageIndex != imageElements.length) {
+        angular.element(activeImageElement.nextElementSibling).addClass('image-active');
+        angular.element(activeImageElement).removeClass('image-active');
+      }
+
+    } else {
+      imageContainerElement.scrollTo({
+        top: 0,
+        left: scrollCoordinateX,
+        behavior: 'smooth',
+      });
+
+      if (activeImageIndex != 1) {
+        angular.element(activeImageElement.previousElementSibling).addClass('image-active');
+        angular.element(activeImageElement).removeClass('image-active');
+      }
+    }
+
+    $scope.hideImageButtons(projectId);
+  };
+
+
+  // Execute Functions Here
   $window.addEventListener("scroll", function () {
     if ($window.pageYOffset === 0) {
       $scope.hideMainContent();
@@ -119,8 +210,18 @@ app.controller('mainCtrl', function($scope, $http, $window) {
   })
 
   observer.observe(document.querySelector('#skills'));
+
+  let checkboxElements = document.querySelectorAll('.checkbox-cover');
+  for (var i = 0; i < checkboxElements.length; i++) {
+    observer.observe(checkboxElements[i]);
+  };
+
   observer.observe(document.querySelector('#about'));
   observer.observe(document.querySelector('#skills'));
   observer.observe(document.querySelector('#projects'));
   observer.observe(document.querySelector('#contacts'));
+
+  $scope.hideImageButtons('project1');
+  $scope.hideImageButtons('project2');
+  $scope.hideImageButtons('project3');
 });
