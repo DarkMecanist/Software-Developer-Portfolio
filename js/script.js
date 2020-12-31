@@ -2,6 +2,7 @@ var app = angular.module('developerPortfolio', []);
 
 app.controller('mainCtrl', function($scope, $http, $window) {
   var activeNavLinkId = '';
+  var openModalId = '';
 
   var observer = new IntersectionObserver(function(entries) {
     // isIntersecting is true when element and viewport are overlapping
@@ -198,6 +199,33 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     $scope.hideImageButtons(projectId);
   };
 
+  $scope.detectPressedKey = function() {
+    if (event.key === 'Escape') {
+      $scope.closeModal();
+    }
+  };
+
+  $scope.disableModalEvents = function() {
+    document.removeEventListener("keydown", $scope.detectPressedKey);
+  };
+
+  $scope.enableModalEvents = function() {
+    document.addEventListener("keydown", $scope.detectPressedKey);
+  };
+
+  $scope.openModal = function(modalId) {
+    angular.element(document.getElementById(modalId)).addClass('modal-active');
+
+    $scope.enableModalEvents();
+
+    openModalId = modalId;
+  };
+
+  $scope.closeModal = function() {
+    angular.element(document.getElementById(openModalId)).removeClass('modal-active');
+
+    $scope.disableModalEvents();
+  };
 
   // Execute Functions Here
   $window.addEventListener("scroll", function () {

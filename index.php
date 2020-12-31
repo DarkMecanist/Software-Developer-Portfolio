@@ -144,7 +144,7 @@
           <div class="image-carousel">
             <button id="img-previous-project1" class="button img-previous" ng-click="switchImage('project1', 'previous')">◄</button>
             <button id="img-next-project1" class="button img-next" ng-click="switchImage('project1', 'next')">►</button>
-            <div id="image-container-project1" class="image-container">
+            <div id="image-container-project1" class="image-container" ng-click="openModal('modal-image')">
               <?php
                 $dir = glob("./images/project1/*");
                 $counter = 0;
@@ -196,7 +196,7 @@
           <div class="image-carousel">
             <button id="img-previous-project2" class="button img-previous" ng-click="switchImage('project2', 'previous')">◄</button>
             <button id="img-next-project2" class="button img-next" ng-click="switchImage('project2', 'next')">►</button>
-            <div id="image-container-project2" class="image-container">
+            <div id="image-container-project2" class="image-container" ng-click="openModal('modal-image')">
               <?php
                 $dir = glob("./images/project2/*");
                 $counter = 0;
@@ -259,7 +259,7 @@
           <div class="image-carousel">
             <button id="img-previous-project3" class="button img-previous" ng-click="switchImage('project3', 'previous')">◄</button>
             <button id="img-next-project3" class="button img-next" ng-click="switchImage('project3', 'next')">►</button>
-            <div id="image-container-project3" class="image-container">
+            <div id="image-container-project3" class="image-container" ng-click="openModal('modal-image')">
               <?php
                 $dir = glob("./images/project3/*");
                 $counter = 0;
@@ -334,6 +334,13 @@
             <li class="visible-xs"><a class="contact-header" href="tel:965570450"><span class="lang">Telemóvel</span><img id="logo-phone" class="logo-contacts" src="images/phone.png" alt="logo-phone"></a></li>
           </ul>
       </footer>
+    </div>
+
+    <div id="modal-image" class="modal-box">
+      <div class="modal-content">
+        <button type="button" class="button-close-modal" ng-click="closeModal('modal-image')">X</button>
+        <div id="modal-image-container"></div>
+      </div>
     </div>
 
     <script src="js/jquery-3.5.1.min.js"></script>
