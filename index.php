@@ -4,8 +4,6 @@
 
   $page_id = 1;
   $visitor_ip = $_SERVER['REMOTE_ADDR'];
-  $visitor_ip = "139.180.175.120";
-
   add_view($conn, $visitor_ip, $page_id);
  ?>
 
@@ -144,7 +142,7 @@
           <div class="image-carousel">
             <button id="img-previous-project1" class="button img-previous" ng-click="switchImage('project1', 'previous')">◄</button>
             <button id="img-next-project1" class="button img-next" ng-click="switchImage('project1', 'next')">►</button>
-            <div id="image-container-project1" class="image-container" ng-click="openModal('modal-image')">
+            <div id="image-container-project1" class="image-container" ng-click="openModal('modal-image', 'project1')">
               <?php
                 $dir = glob("./images/project1/*");
                 $counter = 0;
@@ -196,7 +194,7 @@
           <div class="image-carousel">
             <button id="img-previous-project2" class="button img-previous" ng-click="switchImage('project2', 'previous')">◄</button>
             <button id="img-next-project2" class="button img-next" ng-click="switchImage('project2', 'next')">►</button>
-            <div id="image-container-project2" class="image-container" ng-click="openModal('modal-image')">
+            <div id="image-container-project2" class="image-container" ng-click="openModal('modal-image', 'project2')">
               <?php
                 $dir = glob("./images/project2/*");
                 $counter = 0;
@@ -259,7 +257,7 @@
           <div class="image-carousel">
             <button id="img-previous-project3" class="button img-previous" ng-click="switchImage('project3', 'previous')">◄</button>
             <button id="img-next-project3" class="button img-next" ng-click="switchImage('project3', 'next')">►</button>
-            <div id="image-container-project3" class="image-container" ng-click="openModal('modal-image')">
+            <div id="image-container-project3" class="image-container" ng-click="openModal('modal-image', 'project3')">
               <?php
                 $dir = glob("./images/project3/*");
                 $counter = 0;

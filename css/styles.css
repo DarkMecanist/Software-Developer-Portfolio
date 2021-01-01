@@ -378,6 +378,7 @@ hr {
 .project {
   border: 2px solid #f2f2f2;
   border-radius: 10px;
+  box-shadow: inset 0 0 20px #f2f2f2 ;
   padding: 20px 20px 40px 20px;
   text-align: center;
   margin-bottom: 20px;
@@ -622,17 +623,44 @@ button.img-button-inactive {
   top: 2.5%;
   background-color: #262626;
   opacity: 1;
+  border-radius: 15px;
 }
 
 .button-close-modal {
   width: 35px;
   height: 35px;
   top: 0;
-  right: 0
+  right: 0;
+  z-index: 7;
 }
 
 body.body-modal-active {
   padding-right: 15px;
+}
+
+#modal-image-container {
+  overflow: hidden;
+}
+
+#image-modal {
+  display: block;
+  margin: auto;
+  height: 100%;
+  animation: zoom .5s forwards;
+}
+
+#image-modal:hover {
+  cursor: pointer;
+}
+
+@keyframes zoom {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    } to {
+      transform: scale(1);
+      opacity: 1;
+    }
 }
 
 /* MEDIA QUERIES */

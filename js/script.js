@@ -3,6 +3,15 @@ var app = angular.module('developerPortfolio', []);
 app.controller('mainCtrl', function($scope, $http, $window) {
   var activeNavLinkId = '';
   var openModalId = '';
+  var activeImage = {
+    'project1': 1,
+    'project2': 1,
+    'project3': 1
+  }
+
+  // left: 37, up: 38, right: 39, down: 40,
+  // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+  var scrollKeys = {32: 1, 33: 1, 34: 1, 35: 1, 36: 1, 37: 1, 38: 1, 39: 1, 40: 1};
 
   var observer = new IntersectionObserver(function(entries) {
     // isIntersecting is true when element and viewport are overlapping
@@ -110,8 +119,14 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     }
   };
 
-  $scope.animateCheckbox = function(checkBoxElement) {
-    angular.element(checkBoxElement).addClass('checkbox-cover-active');
+  $scope.animateCheckbox = function(projectId) {
+    let projectElement = document.getElementById(projectId);
+    let checkboxElements = projectElement.querySelectorAll('.checkbox-cover');
+
+    for (var i = 0; i < checkboxElements.length; i++) {
+      angular.element(checkboxElements[i]).addClass('checkbox-cover-active');
+    };
+
   };
 
   $scope.displayImageButtons = function(projectId) {
@@ -169,8 +184,6 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     let activeImageIndex = parseInt(activeImageElement.id.split('-')[activeImageElement.id.split('-').length - 1]);
     let scrollCoordinateX = $scope.returnScrollCoordinateX(activeImageIndex, imageElements.length, scrollWidth, direction);
 
-
-
     if (direction === 'next') {
       imageContainerElement.scrollTo({
         top: 0,
@@ -181,6 +194,8 @@ app.controller('mainCtrl', function($scope, $http, $window) {
       if (activeImageIndex != imageElements.length) {
         angular.element(activeImageElement.nextElementSibling).addClass('image-active');
         angular.element(activeImageElement).removeClass('image-active');
+
+        activeImage[projectId] = activeImageIndex + 1;
       }
 
     } else {
@@ -193,10 +208,62 @@ app.controller('mainCtrl', function($scope, $http, $window) {
       if (activeImageIndex != 1) {
         angular.element(activeImageElement.previousElementSibling).addClass('image-active');
         angular.element(activeImageElement).removeClass('image-active');
+
+        activeImage[projectId] = activeImageIndex - 1;
       }
     }
 
     $scope.hideImageButtons(projectId);
+  };
+
+  $scope.preventDefault = function(e) {
+    e.preventDefault();
+  };
+
+  $scope.preventDefaultForScrollKeys = function(e) {
+    if (scrollKeys[e.keyCode]) {
+       $scope.preventDefault(e);
+       return false;
+    }
+  };
+
+  $scope.disableScroll = function() {
+    console.log('triggered');
+    // modern Chrome requires { passive: false } when adding event
+    var supportsPassive = false;
+    try {
+      window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+        get: function () { supportsPassive = true; }
+      }));
+    } catch(e) {}
+
+    var wheelOpt = supportsPassive ? { passive: false } : false;
+    var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+
+    $window.addEventListener('DOMMouseScroll', $scope.preventDefault, false); // older FF
+    $window.addEventListener(wheelEvent, $scope.preventDefault, wheelOpt); // modern desktop
+    $window.addEventListener('touchmove', $scope.preventDefault, wheelOpt); // mobile
+    $window.addEventListener('keydown', $scope.preventDefaultForScrollKeys, false);
+  };
+
+  $scope.enableScroll = function() {
+    // modern Chrome requires { passive: false } when adding event
+    var supportsPassive = false;
+    try {
+      $window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+        get: function () { supportsPassive = true; }
+      }));
+    } catch(e) {}
+
+    var wheelOpt = supportsPassive ? { passive: false } : false;
+    var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+
+    $window.removeEventListener('DOMMouseScroll', $scope.preventDefault, false); // older FF
+    $window.removeEventListener(wheelEvent, $scope.preventDefault, wheelOpt); // modern desktop
+    $window.removeEventListener('touchmove', $scope.preventDefault, wheelOpt); // mobile
+    $window.removeEventListener('keydown', $scope.preventDefaultForScrollKeys, false);
   };
 
   $scope.detectPressedKey = function() {
@@ -213,18 +280,31 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     document.addEventListener("keydown", $scope.detectPressedKey);
   };
 
-  $scope.openModal = function(modalId) {
+  $scope.getImage = function(projectId) {
+    let imgElement = document.getElementById(projectId + '-img-' + activeImage[projectId]);
+    let newImgHTML = "<img id='image-modal' src=" + imgElement.src + ">"
+
+    document.querySelector('#modal-image-container').innerHTML = newImgHTML;
+
+  };
+
+  $scope.openModal = function(modalId, projectId) {
+    $scope.getImage(projectId);
+
     angular.element(document.getElementById(modalId)).addClass('modal-active');
 
     $scope.enableModalEvents();
+    $scope.disableScroll();
 
     openModalId = modalId;
+
   };
 
   $scope.closeModal = function() {
     angular.element(document.getElementById(openModalId)).removeClass('modal-active');
 
     $scope.disableModalEvents();
+    $scope.enableScroll();
   };
 
   // Execute Functions Here
@@ -239,11 +319,6 @@ app.controller('mainCtrl', function($scope, $http, $window) {
 
   observer.observe(document.querySelector('#skills'));
 
-  let checkboxElements = document.querySelectorAll('.checkbox-cover');
-  for (var i = 0; i < checkboxElements.length; i++) {
-    observer.observe(checkboxElements[i]);
-  };
-
   observer.observe(document.querySelector('#about'));
   observer.observe(document.querySelector('#skills'));
   observer.observe(document.querySelector('#projects'));
@@ -252,4 +327,13 @@ app.controller('mainCtrl', function($scope, $http, $window) {
   $scope.hideImageButtons('project1');
   $scope.hideImageButtons('project2');
   $scope.hideImageButtons('project3');
+
+  // TO DO
+  // - Replace observer with scroll coordinates method, and include animateCheckbox trieggers
+  // Try to find a way to animateCheckbox individually by project
+  // - Implement setInterval to execute send_email.php weekly
+  // - Implemente functionality for changeLang
+  // - Implement functionality for mobile nav-Menu
+  // - Fix modal box on the media queries
+  // $scope.animateCheckbox('project1');
 });
