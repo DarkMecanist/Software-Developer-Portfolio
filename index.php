@@ -49,8 +49,8 @@
         </div>
 
         <div class="lang-picker">
-          <div class="language" ng-click="changeLang('pt')">Pt</div>
-          <div class="language" ng-click="changeLang('en')">En</div>
+          <div class="language" ng-click="getTranslateJson('pt')">Pt</div>
+          <div class="language" ng-click="getTranslateJson('en')">En</div>
         </div>
 
       </div>

@@ -1,6 +1,8 @@
 var app = angular.module('developerPortfolio', []);
 
 app.controller('mainCtrl', function($scope, $http, $window) {
+  var setLang = 'pt';
+
   var activeNavLinkId = '';
   var openModalId = '';
   var activeImage = {
@@ -75,8 +77,37 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     }
   };
 
-  $scope.changeLang = function(lang) {
+  $scope.getTranslateJson = function(lang) {
+    if (lang !== setLang) {
+      let fileName = 'translate_' + lang + '.json';
 
+      fetch(fileName).then(response => response.json()).then(data => {
+        $scope.changeLang(data, lang);
+      });
+    }
+  };
+
+  $scope.convertJsonToHash = function(jsonText) {
+    let hashTable = {};
+
+    for (var i = 0; i < jsonText.length; i++) {
+      let key = Object.keys(jsonText[i])[0];
+      let value = Object.values(jsonText[i])[0];
+
+      hashTable[key] = value;
+    }
+    return hashTable;
+  };
+
+  $scope.changeLang = function(jsonText, lang) {
+    let hashTable = $scope.convertJsonToHash(jsonText);
+    let langElements = document.querySelectorAll('.lang');
+
+    for (let i = 0; i < langElements.length; i++) {
+      angular.element(langElements[i]).text(hashTable[angular.element(langElements[i]).text()]);
+    }
+
+    setLang = lang;
   };
 
   $scope.displayMainContent = function() {
@@ -330,10 +361,12 @@ app.controller('mainCtrl', function($scope, $http, $window) {
 
   // TO DO
   // - Replace observer with scroll coordinates method, and include animateCheckbox trieggers
-  // Try to find a way to animateCheckbox individually by project
+  // - Try to find a way to animateCheckbox individually by project
   // - Implement setInterval to execute send_email.php weekly
   // - Implemente functionality for changeLang
   // - Implement functionality for mobile nav-Menu
   // - Fix modal box on the media queries
+  // - Consider implementing image carousel for modal
+
   // $scope.animateCheckbox('project1');
 });
