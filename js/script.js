@@ -25,8 +25,8 @@ app.controller('mainCtrl', function($scope, $http, $window) {
         $scope.loadSkillBars();
       }
 
-      if (angular.element(entries[0].target).hasClass('checkbox-cover')) {
-        $scope.animateCheckbox(entries[0].target);
+      if (angular.element(entries[0].target).hasClass('project')) {
+        $scope.animateCheckbox(entries[0].target.id);
       }
 
       if (entries[0].target.id === 'about' || entries[0].target.id === 'skills') {
@@ -151,6 +151,7 @@ app.controller('mainCtrl', function($scope, $http, $window) {
   };
 
   $scope.animateCheckbox = function(projectId) {
+    console.log('triggered');
     let projectElement = document.getElementById(projectId);
     let checkboxElements = projectElement.querySelectorAll('.checkbox-cover');
 
@@ -355,18 +356,20 @@ app.controller('mainCtrl', function($scope, $http, $window) {
   observer.observe(document.querySelector('#projects'));
   observer.observe(document.querySelector('#contacts'));
 
+  observer.observe(document.querySelector('#project1'));
+  observer.observe(document.querySelector('#project2'));
+  observer.observe(document.querySelector('#project3'));
+  observer.observe(document.querySelector('#project4'));
+
+  // Add here if projects containing images get added
   $scope.hideImageButtons('project1');
   $scope.hideImageButtons('project2');
   $scope.hideImageButtons('project3');
 
   // TO DO
-  // - Replace observer with scroll coordinates method, and include animateCheckbox trieggers
+  // - Fix Bug when Nav Buttons are not coming active as they should
   // - Try to find a way to animateCheckbox individually by project
   // - Implement setInterval to execute send_email.php weekly
-  // - Implemente functionality for changeLang
   // - Implement functionality for mobile nav-Menu
-  // - Fix modal box on the media queries
   // - Consider implementing image carousel for modal
-
-  // $scope.animateCheckbox('project1');
 });
