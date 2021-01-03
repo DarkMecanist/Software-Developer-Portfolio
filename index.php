@@ -22,14 +22,23 @@
   <body ng-controller="mainCtrl">
     <nav id="nav" class="navbar navbar-expand-lg">
       <div class="container">
-        <a id="site-logo" class="navbar-brand" href="index.php"><span class="capital">J</span>oão<span class="capital">M</span>outinho</a>
-        <div id="style-underline"></div>
+        <div id="brandContainer">
+          <a id="site-logo" class="navbar-brand" href="index.php"><span class="capital">J</span>oão<span class="capital">M</span>outinho</a>
+          <div id="style-underline"></div>
+        </div>
 
-        <button id="navbarToggle" type="button" class="navbar-toggle collapsed hidden-l hidden-m" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false" ng-mouseover="animateNavButton()" ng-mouseleave="deanimateNavButton()">
-          <hr id="left-tilted-bar">
-          <hr id="vertical-bar">
-          <hr id="right-tilted-bar">
-        </button>
+        <div id="navbarToggleContainer">
+          <div class="lang-picker">
+            <div class="language" ng-click="getTranslateJson('pt')">Pt</div>
+            <div class="language" ng-click="getTranslateJson('en')">En</div>
+          </div>
+          <button id="navbarToggle" type="button" class="navbar-toggle collapsed hidden-xl hidden-l hidden-m" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false" ng-mouseover="animateNavButton()" ng-mouseleave="deanimateNavButton()" ng-click="navButtonActivate()">
+            <hr id="left-tilted-bar">
+            <hr id="vertical-bar">
+            <hr id="right-tilted-bar">
+          </button>
+
+        </div>
 
         <div id="collapsable-nav" class="navbar-collapse collapse">
           <ul class="navbar-nav">
@@ -46,12 +55,11 @@
               <div class="nav-underline"></div>
             </li>
           </ul>
+
+
         </div>
 
-        <div class="lang-picker">
-          <div class="language" ng-click="getTranslateJson('pt')">Pt</div>
-          <div class="language" ng-click="getTranslateJson('en')">En</div>
-        </div>
+
 
       </div>
     </nav>

@@ -86,6 +86,13 @@ nav a, nav a:hover {
   color: #262626;
 }
 
+#brandContainer {
+  /* display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+  justify-content: flex-start; */
+}
+
 .navbar-brand {
   font-size: 2em;
   text-shadow: .5px .5px grey;
@@ -98,6 +105,8 @@ nav a, nav a:hover {
   border-radius: 25%;
   background-color: #f2f2f2;
   position: absolute;
+  top: 35px;
+  display: block;
   transform: translateY(30px);
   z-index: 1;
   transition: all .5s ease-out;
@@ -115,6 +124,7 @@ nav a, nav a:hover {
 
 .navbar-collapse {
   flex-flow: row-reverse;
+  /* transition: all .3s linear; */
 }
 
 .navbar-nav {
@@ -159,6 +169,11 @@ nav a, nav a:hover {
 .nav-link:hover + .nav-underline {
   width: 50%;
   background-color: #262626;
+}
+
+.lang-picker {
+  float: right;
+  margin-left: 15px;
 }
 
 .language {
@@ -252,13 +267,13 @@ nav a, nav a:hover {
 #navbarToggle {
   border-radius: 5px;
   border: 3px solid #262626;
-  position: static;
-  /* float: right; */
   background-color: #b94646;
   padding: 0 5px;
-  margin: 0;
   width: 50px;
   height: 50px;
+  position: static;
+  float: right;
+  margin-top: 5px;
 }
 
 #navbarToggle hr {
@@ -284,6 +299,18 @@ nav a, nav a:hover {
   position: relative;
   left: 10px;
   top: -2px;
+}
+
+#navbarToggle.open {
+  background-color: #b30000;
+}
+
+#navbarToggle hr.open {
+  margin: 8px;
+}
+
+#navbarToggle hr.open.focused {
+  margin: 2px;
 }
 
 /* MAIN CONTENT */
@@ -506,6 +533,26 @@ button:hover {
   background-color: #b94646;
 }
 
+button.img-previous:hover {
+  animation: slideLeft .4s;
+}
+
+button.img-next:hover {
+  animation: slideRight .4s;
+}
+
+@keyframes slideLeft {
+  0% {left: -25px;}
+  50% {left: -35px;}
+  100% {left: -25px;}
+}
+
+@keyframes slideRight {
+  0% {left: 875px;}
+  50% {left: 885px;}
+  100% {left: 875px;}
+}
+
 button.img-button-inactive {
   opacity: 0 !important;
   width: 0;
@@ -675,7 +722,9 @@ body.body-modal-active {
 
 /********** Extra Large devices only **********/
 @media (min-width: 1450px) {
-
+  .hidden-xl {
+    display: none !important;
+  }
 }
 
 /********** Large devices only **********/
@@ -687,6 +736,10 @@ body.body-modal-active {
 
   .logo-contacts {
     height: 30px;
+  }
+
+  .hidden-l {
+    display: none !important;
   }
 }
 
@@ -715,6 +768,12 @@ body.body-modal-active {
     top: 180px;
   }
 
+  @keyframes slideRight {
+    0% {left: 775px;}
+    50% {left: 785px;}
+    100% {left: 775px;}
+  }
+
   .panel-footer {
     width: 70%;
     margin-top: 400px;
@@ -726,9 +785,8 @@ body.body-modal-active {
     height: 30px;
   }
 
-  #image-modal {
-    /* position: relative;
-    width: 980px; */
+  .hidden-m {
+    display: none !important;
   }
 }
 
@@ -777,6 +835,12 @@ body.body-modal-active {
     top: 140px;
   }
 
+  @keyframes slideRight {
+    0% {left: 575px;}
+    50% {left: 585px;}
+    100% {left: 575px;}
+  }
+
   .panel-footer {
     width: 85%;
     margin-top: 450px;
@@ -788,6 +852,9 @@ body.body-modal-active {
     height: 25px;
   }
 
+  .hidden-s {
+    display: none !important;
+  }
 }
 
 /********** Extra small devices only **********/
@@ -863,6 +930,12 @@ body.body-modal-active {
     top: 70px;
   }
 
+  @keyframes slideRight {
+    0% {left: 375px;}
+    50% {left: 385px;}
+    100% {left: 375px;}
+  }
+
   .checkbox, .checkbox-cover {
     display: inline-block;
   }
@@ -882,18 +955,13 @@ body.body-modal-active {
     height: 25px;
   }
 
-  .hidden-xs {
-    display: none;
-  }
-
-  .visible-xs {
-    display: block;
-  }
-
   .modal-content {
     height: 60%;
   }
 
+  .hidden-xs {
+    display: none !important;
+  }
 }
 
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/

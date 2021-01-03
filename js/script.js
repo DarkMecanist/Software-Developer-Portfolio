@@ -2,6 +2,7 @@ var app = angular.module('developerPortfolio', []);
 
 app.controller('mainCtrl', function($scope, $http, $window) {
   var setLang = 'pt';
+  var navButtonActive = false;
 
   var activeNavLinkId = '';
   var openModalId = '';
@@ -44,6 +45,50 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     }
 
   }, {threshold: [0]});
+
+
+  // Need to fix the way it is detecting elements
+  $scope.detectClickedElement = function() {
+    let navButtonElement = document.querySelector('#navbarToggle');
+    let hrElements = navButtonElement.children;
+
+      if (event.target !== document.querySelector('#nav') || event.target !== document.querySelector('#brandContainer') || event.target !== document.querySelector('#collapsable-nav')) {
+        console.log('triggered');
+        angular.element(navButtonElement).removeClass('open');
+        for (var i = 0; i < hrElements.length; i++) {
+          angular.element(hrElements[i]).removeClass('open');
+        }
+
+        navButtonActive = false;
+        angular.element(document.querySelector('#collapsable-nav')).removeClass('show');
+      }else {
+
+      }
+  };
+
+
+
+  $scope.navButtonActivate = function() {
+    let navButtonElement = document.querySelector('#navbarToggle');
+    let hrElements = navButtonElement.children;
+
+    if (!navButtonActive) {
+      angular.element(navButtonElement).addClass('open');
+      for (var i = 0; i < hrElements.length; i++) {
+        angular.element(hrElements[i]).addClass('open');
+      }
+
+      navButtonActive = true;
+      $scope.displayMainContent();
+    } else {
+      angular.element(navButtonElement).removeClass('open');
+      for (var i = 0; i < hrElements.length; i++) {
+        angular.element(hrElements[i]).removeClass('open');
+      }
+
+      navButtonActive = false;
+    }
+  };
 
   $scope.animateNavButton = function() {
     let hrElements = document.querySelector('#navbarToggle').children;
@@ -151,14 +196,12 @@ app.controller('mainCtrl', function($scope, $http, $window) {
   };
 
   $scope.animateCheckbox = function(projectId) {
-    console.log('triggered');
     let projectElement = document.getElementById(projectId);
     let checkboxElements = projectElement.querySelectorAll('.checkbox-cover');
 
     for (var i = 0; i < checkboxElements.length; i++) {
       angular.element(checkboxElements[i]).addClass('checkbox-cover-active');
     };
-
   };
 
   $scope.displayImageButtons = function(projectId) {
@@ -339,7 +382,8 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     $scope.enableScroll();
   };
 
-  // Execute Functions Here
+  // Call Functions Here
+  document.addEventListener('click', $scope.detectClickedElement);
   $window.addEventListener("scroll", function () {
     if ($window.pageYOffset === 0) {
       $scope.hideMainContent();
@@ -372,4 +416,5 @@ app.controller('mainCtrl', function($scope, $http, $window) {
   // - Implement setInterval to execute send_email.php weekly
   // - Implement functionality for mobile nav-Menu
   // - Consider implementing image carousel for modal
+  // - Add Soft Skills Section
 });
