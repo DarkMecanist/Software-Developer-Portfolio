@@ -51,6 +51,17 @@ app.controller('mainCtrl', function($scope, $http, $window) {
   $scope.detectClickedElement = function() {
     let navButtonElement = document.querySelector('#navbarToggle');
     let hrElements = navButtonElement.children;
+    let navElement = document.querySelector('#nav')
+
+    let validElements = [navElement];
+
+    for (let i = 0; i < navElement.children.length; i++) {
+      validElements.push(navElement.children[i]);
+    }
+
+    // console.log(navElement.childNodes);
+
+
 
       if (event.target !== document.querySelector('#nav') || event.target !== document.querySelector('#brandContainer') || event.target !== document.querySelector('#collapsable-nav')) {
         console.log('triggered');
@@ -382,8 +393,26 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     $scope.enableScroll();
   };
 
+  function checkDate(weekDay, hour, minutes, seconds) {
+    let weekDays = {
+      'Sunday': 0,
+      'Monday': 1,
+      'Tuesday': 2,
+      'Wednesday': 3,
+      'Thursday': 4,
+      'Friday': 5,
+      'Saturday': 6
+    }
+
+    today = new Date();
+
+    if (today.getDay() === weekDays[weekDay] && today.getHours() == hour && today.getMinutes() == minutes && today.getSeconds() == seconds) {
+      fetch('send_email.php').then(console.log('SEND GET SUCESSFULLY'));
+    }
+  }
+
   // Call Functions Here
-  document.addEventListener('click', $scope.detectClickedElement);
+  // document.addEventListener('click', $scope.detectClickedElement);
   $window.addEventListener("scroll", function () {
     if ($window.pageYOffset === 0) {
       $scope.hideMainContent();
@@ -410,11 +439,12 @@ app.controller('mainCtrl', function($scope, $http, $window) {
   $scope.hideImageButtons('project2');
   $scope.hideImageButtons('project3');
 
+  setInterval(checkDate, 1000, 'Tuesday', 22, 59, 00);
+
   // TO DO
-  // - Fix Bug when Nav Buttons are not coming active as they should
+  // - Fix Bug when Nav Buttons are not becoming active as they should
   // - Try to find a way to animateCheckbox individually by project
   // - Implement setInterval to execute send_email.php weekly
-  // - Implement functionality for mobile nav-Menu
   // - Consider implementing image carousel for modal
   // - Add Soft Skills Section
 });

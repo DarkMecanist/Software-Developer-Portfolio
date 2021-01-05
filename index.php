@@ -59,8 +59,6 @@
 
         </div>
 
-
-
       </div>
     </nav>
 
@@ -168,7 +166,7 @@
           </div>
 
           <div class="link-section">
-              <a class="button lang" href="" target="_blank">Código</a>
+              <a class="button lang" href="https://github.com/DarkMecanist/Production-Management-App" target="_blank">Código</a>
           </div>
         </div>
 
@@ -331,13 +329,13 @@
       <footer id="contacts" class="panel-footer">
           <ul>
             <li class="hidden-xs"><span class="contact-header">GitHub<img id="logo-github" class="logo-contacts" src="images/github.png" alt="logo-github"></span><a class="contact-link" href="https://github.com/DarkMecanist" target="_blank">https://github.com/DarkMecanist</a></li>
-            <li class="hidden-xs"><span class="contact-header"><img id="logo-linkedin" class="logo-contacts" src="images/linkedin.png" alt="logo-linkedin"></span><a class="contact-link" href=">https://www.linkedin.com/in/jo%C3%A3o-moutinho-74725b169/" target="_blank">https://www.linkedin.com/in/jo%C3%A3o-moutinho-74725b169/</a></li>
+            <li class="hidden-xs"><span class="contact-header"><img id="logo-linkedin" class="logo-contacts" src="images/linkedin.png" alt="logo-linkedin"></span><a class="contact-link" href=">https://www.linkedin.com/in/jmoutinho94" target="_blank">https://www.linkedin.com/in/jmoutinho94</a></li>
             <li class="hidden-xs"><span class="contact-header">Email<img id="logo-email" class="logo-contacts" src="images/email.png" alt="logo-email"></span><a class="contact-link" href="mailto:jmoutinho94@gmail.com" target="_blank">jmoutinho94@gmail.com</a></li>
             <li class="hidden-xs"><span class="contact-header"><span class="lang">Telemóvel</span><img id="logo-phone" class="logo-contacts" src="images/phone.png" alt="logo-phone"></span><a class="contact-link" href="tel:965570450">(+351) 965570450</a></li>
-            <li class="visible-xs"><a class="contact-header" href="https://github.com/DarkMecanist" target="_blank">GitHub<img id="logo-github" class="logo-contacts" src="images/github.png" alt="logo-github"></a></li>
-            <li class="visible-xs"><a class="contact-header" href=">https://www.linkedin.com/in/jo%C3%A3o-moutinho-74725b169/" target="_blank"><img id="logo-linkedin" class="logo-contacts" src="images/linkedin.png" alt="logo-linkedin"></a></li>
-            <li class="visible-xs"><a class="contact-header" href="mailto:jmoutinho94@gmail.com" target="_blank">Email<img id="logo-email" class="logo-contacts" src="images/email.png" alt="logo-email"></a></li>
-            <li class="visible-xs"><a class="contact-header" href="tel:965570450"><span class="lang">Telemóvel</span><img id="logo-phone" class="logo-contacts" src="images/phone.png" alt="logo-phone"></a></li>
+            <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="https://github.com/DarkMecanist" target="_blank">GitHub<img id="logo-github" class="logo-contacts" src="images/github.png" alt="logo-github"></a></li>
+            <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="https://www.linkedin.com/in/jmoutinho94" target="_blank"><img id="logo-linkedin" class="logo-contacts" src="images/linkedin.png" alt="logo-linkedin"></a></li>
+            <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="mailto:jmoutinho94@gmail.com" target="_blank">Email<img id="logo-email" class="logo-contacts" src="images/email.png" alt="logo-email"></a></li>
+            <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="tel:965570450"><span class="lang">Telemóvel</span><img id="logo-phone" class="logo-contacts" src="images/phone.png" alt="logo-phone"></a></li>
           </ul>
       </footer>
     </div>

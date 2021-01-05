@@ -16,4 +16,6 @@
   ini_set("smtp_port","465");
   mail($mailto, $subject, $message, $headers);
 
+  echo "MAIL SENT SUCESSFULLY";
+
  ?>

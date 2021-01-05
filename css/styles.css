@@ -35,10 +35,6 @@
 
 /* GENERAL */
 
-.visible-xs {
-  display: none;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -48,11 +44,6 @@ body {
   background-color: #262626;
   color: #b94646;
   font-family: 'Montserrat', sans-serif;
-}
-
-.container {
-  /* display: flex; */
-  /* flex: 0 0 1300px !important; */
 }
 
 a, a:hover {
@@ -84,13 +75,6 @@ a, a:hover {
 
 nav a, nav a:hover {
   color: #262626;
-}
-
-#brandContainer {
-  /* display: flex;
-  flex-direction: column;
-  flex-basis: auto;
-  justify-content: flex-start; */
 }
 
 .navbar-brand {
@@ -169,6 +153,12 @@ nav a, nav a:hover {
 .nav-link:hover + .nav-underline {
   width: 50%;
   background-color: #262626;
+}
+
+.nav-text-container {
+  display: inline-block;
+  background-color: yellow;
+  width: 80%;
 }
 
 .lang-picker {
@@ -556,7 +546,6 @@ button.img-next:hover {
 button.img-button-inactive {
   opacity: 0 !important;
   width: 0;
-  /* display: none; */
 }
 
 .image-container {
@@ -776,7 +765,7 @@ body.body-modal-active {
 
   .panel-footer {
     width: 70%;
-    margin-top: 400px;
+    margin-top: 320px;
     margin-right: 150px;
     font-size: 1em;
   }
@@ -795,8 +784,16 @@ body.body-modal-active {
 
   .navbar-nav {
     overflow: hidden;
-    /* height: 0; */
+  }
 
+  .nav-link:hover + .nav-underline {
+    width: 10%;
+    background-color: #262626;
+  }
+
+  .navbar-underline-active {
+    width: 10%;
+    background-color: #262626;
   }
 
   #about {
@@ -843,8 +840,8 @@ body.body-modal-active {
 
   .panel-footer {
     width: 85%;
-    margin-top: 450px;
-    margin-right: 100px;
+    margin-top: 350px;
+    margin-right: 50px;
     font-size: .9em;
   }
 
@@ -871,6 +868,16 @@ body.body-modal-active {
     font-size: 2em;
     margin-top: 150px;
     margin-left: 40px;
+  }
+
+  .nav-link:hover + .nav-underline {
+    width: 10%;
+    background-color: #262626;
+  }
+
+  .navbar-underline-active {
+    width: 10%;
+    background-color: #262626;
   }
 
   #about {
