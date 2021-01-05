@@ -318,7 +318,7 @@
           </div>
 
           <div class="link-section">
-            <a class="button lang" href="" target="_blank">Código</a>
+            <a class="button lang" href="https://github.com/DarkMecanist/Software-Developer-Portfolio" target="_blank">Código</a>
           </div>
         </div>
       </div>
