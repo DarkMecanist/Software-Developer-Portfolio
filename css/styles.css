@@ -973,5 +973,115 @@ body.body-modal-active {
 
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {
+  body {
+    font-size: .6em;
+  }
 
+  #nav.navbar {
+    padding: 8px 15px;
+  }
+
+  #main-content {
+    text-align: center;
+  }
+
+  .container {
+    width: 100% !important;
+  }
+
+  #style-underline {
+    top: 25px;
+    height: 3px;
+  }
+
+  .navbar-brand:hover + #style-underline {
+    width: 200px;
+    background-color: #262626;
+  }
+
+  .lang-picker {
+    margin-top: 10px;
+  }
+
+  hr {
+    margin: 30px 0;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
+
+  #about {
+    width: 100%;
+    text-align: center;
+  }
+
+  .skill-block {
+    width: 90%;
+    height: 240px;
+  }
+
+  .prog-bar-ext {
+    width: 85%;
+  }
+
+  .prog-bar-int {
+    font-size: 1.2em;
+    padding-top: 10px;
+  }
+
+  h4 {
+    font-size: 0.9em;
+  }
+
+  .project-block {
+    font-size: 1.3em;
+    display: block;
+    text-align: center;
+    margin: auto;
+    border-right: 0;
+    width: 90%;
+  }
+
+  .project-block ul {
+    text-align: center;
+    font-size: 0.8em;
+    list-style: none;
+    padding-left: 3px;
+  }
+
+  .checkbox, .project-goals img, .checkbox-cover {
+    display: none
+  }
+
+  .project-goals span {
+    margin-left: 0;
+  }
+
+  .link-section {
+    padding-top: 20px;
+  }
+
+  .image-carousel {
+    display: none;
+  }
+
+  #contacts {
+    margin-top: 275px;
+    margin-right: 25px;
+    padding: 25px;
+    font-size: 1.3em;
+  }
+
+  .logo-contacts {
+    height: 30px;
+  }
+
+  .hidden-sxs {
+    display: none;
+  }
 }

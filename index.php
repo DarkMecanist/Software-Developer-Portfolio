@@ -1,10 +1,10 @@
 <?php
-  require_once('db_connect.php');
-  require_once('functions.php');
-
-  $page_id = 1;
-  $visitor_ip = $_SERVER['REMOTE_ADDR'];
-  add_view($conn, $visitor_ip, $page_id);
+  // require_once('db_connect.php');
+  // require_once('functions.php');
+  //
+  // $page_id = 1;
+  // $visitor_ip = $_SERVER['REMOTE_ADDR'];
+  // add_view($conn, $visitor_ip, $page_id);
  ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>João Moutinho | Web Developer</title>
-    <link rel="icon" href="images/logo-jm.png">
+    <link rel="icon" href="images/logo-jm.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -328,12 +328,12 @@
     <div id="background-box-footer">
       <footer id="contacts" class="panel-footer">
           <ul>
-            <li class="hidden-xs"><span class="contact-header">GitHub<img id="logo-github" class="logo-contacts" src="images/github.png" alt="logo-github"></span><a class="contact-link" href="https://github.com/DarkMecanist" target="_blank">https://github.com/DarkMecanist</a></li>
-            <li class="hidden-xs"><span class="contact-header"><img id="logo-linkedin" class="logo-contacts" src="images/linkedin.png" alt="logo-linkedin"></span><a class="contact-link" href=">https://www.linkedin.com/in/jmoutinho94" target="_blank">https://www.linkedin.com/in/jmoutinho94</a></li>
-            <li class="hidden-xs"><span class="contact-header">Email<img id="logo-email" class="logo-contacts" src="images/email.png" alt="logo-email"></span><a class="contact-link" href="mailto:jmoutinho94@gmail.com" target="_blank">jmoutinho94@gmail.com</a></li>
-            <li class="hidden-xs"><span class="contact-header"><span class="lang">Telemóvel</span><img id="logo-phone" class="logo-contacts" src="images/phone.png" alt="logo-phone"></span><a class="contact-link" href="tel:965570450">(+351) 965570450</a></li>
+            <li class="hidden-xs hidden-sxs"><span class="contact-header">GitHub<img id="logo-github" class="logo-contacts" src="images/github.png" alt="logo-github"></span><a class="contact-link" href="https://github.com/DarkMecanist" target="_blank">https://github.com/DarkMecanist</a></li>
+            <li class="hidden-xs hidden-sxs"><span class="contact-header"><img id="logo-linkedin" class="logo-contacts" src="images/linkedin.png" alt="logo-linkedin"></span><a class="contact-link" href="https://linkedin.com/in/joão-moutinho-74725b169" target="_blank">https://linkedin.com/in/joão-moutinho-74725b169</a></li>
+            <li class="hidden-xs hidden-sxs"><span class="contact-header">Email<img id="logo-email" class="logo-contacts" src="images/email.png" alt="logo-email"></span><a class="contact-link" href="mailto:jmoutinho94@gmail.com" target="_blank">jmoutinho94@gmail.com</a></li>
+            <li class="hidden-xs hidden-sxs"><span class="contact-header"><span class="lang">Telemóvel</span><img id="logo-phone" class="logo-contacts" src="images/phone.png" alt="logo-phone"></span><a class="contact-link" href="tel:965570450">(+351) 965570450</a></li>
             <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="https://github.com/DarkMecanist" target="_blank">GitHub<img id="logo-github" class="logo-contacts" src="images/github.png" alt="logo-github"></a></li>
-            <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="https://www.linkedin.com/in/jmoutinho94" target="_blank"><img id="logo-linkedin" class="logo-contacts" src="images/linkedin.png" alt="logo-linkedin"></a></li>
+            <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="https://linkedin.com/in/joão-moutinho-74725b169" target="_blank"><img id="logo-linkedin" class="logo-contacts" src="images/linkedin.png" alt="logo-linkedin"></a></li>
             <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="mailto:jmoutinho94@gmail.com" target="_blank">Email<img id="logo-email" class="logo-contacts" src="images/email.png" alt="logo-email"></a></li>
             <li class="hidden-xl hidden-l hidden-m hidden-s"><a class="contact-header" href="tel:965570450"><span class="lang">Telemóvel</span><img id="logo-phone" class="logo-contacts" src="images/phone.png" alt="logo-phone"></a></li>
           </ul>
